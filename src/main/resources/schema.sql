@@ -15,6 +15,7 @@ COMMENT ON TABLE Person IS 'Пользователь';
 
 CREATE TABLE IF NOT EXISTS Office (
     id           INTEGER                 COMMENT 'Уникальный идентификатор' PRIMARY KEY AUTO_INCREMENT ,
+    version      INTEGER NOT NULL        COMMENT 'Служебное поле hibernate',
     name         VARCHAR(100) NOT NULL   COMMENT 'Наименование',
     address      VARCHAR(255) NOT NULL   COMMENT 'Адрес',
     phone        VARCHAR(13)             COMMENT 'Номер телефона',
@@ -25,6 +26,7 @@ COMMENT ON TABLE Office IS 'Офис';
 
 CREATE TABLE IF NOT EXISTS Organization (
     id           INTEGER                 COMMENT 'Уникальный идентификатор' PRIMARY KEY AUTO_INCREMENT ,
+    version      INTEGER NOT NULL        COMMENT 'Служебное поле hibernate',
     name         VARCHAR(100) NOT NULL   COMMENT 'Наименование',
     full_name    VARCHAR(255) NOT NULL   COMMENT 'Полное наименование',
     inn          VARCHAR(12)             COMMENT 'ИНН',
