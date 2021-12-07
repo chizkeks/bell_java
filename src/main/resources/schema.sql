@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS Person (
     job_title       VARCHAR(128)                     COMMENT 'Должность',
     phone           VARCHAR(15)                      COMMENT 'Номер телефона',
     is_identified   BOOLEAN DEFAULT false NOT NULL   COMMENT 'Флаг идентификации',
-    org_id          INTEGER                          COMMENT 'Уникальный идентификатор организации (внешний ключ)',
+    office_id       INTEGER                          COMMENT 'Уникальный идентификатор офиса (внешний ключ)',
     citizenship_id  INTEGER                          COMMENT 'Уникальный идентификатор гражданства (внешний ключ)'
 );
 COMMENT ON TABLE Person IS 'Пользователь';
@@ -60,11 +60,11 @@ CREATE TABLE IF NOT EXISTS Document (
 COMMENT ON TABLE Document IS 'Таблица документов';
 
 CREATE INDEX IX_Person_Id ON Person (id);
-ALTER TABLE Person ADD FOREIGN KEY (org_id) REFERENCES Organization(id);
+ALTER TABLE Person ADD FOREIGN KEY (office_id) REFERENCES Office(id);
 ALTER TABLE Person ADD FOREIGN KEY (citizenship_id) REFERENCES Citizenship(id);
 
 CREATE INDEX IX_Office_Id ON Office (id);
-ALTER TABLE Person ADD FOREIGN KEY (org_id) REFERENCES Organization(id);
+ALTER TABLE Office ADD FOREIGN KEY (org_id) REFERENCES Organization(id);
 
 CREATE INDEX IX_Organization_Id ON Organization (id);
 

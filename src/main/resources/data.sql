@@ -12,15 +12,6 @@ VALUES (1, 0, 'Яндекс', 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТ
 INSERT INTO Organization (id, version, name, full_name, inn, kpp, address, phone)
 VALUES (2, 0, 'Google', 'Google LLC', '9193776435', '924001167', '1600 Amphitheater Parkway, Mountain View, California', '+498888888888');
 
-INSERT INTO Person (id, version, first_name, middle_name, surname, job_title, phone, org_id, citizenship_id)
-VALUES (1, 0, 'Иван', 'Иванович', 'Иванов', 'Software engineer', '+79231112233', 1, 1);
-
-INSERT INTO Person (id, version, first_name, middle_name, surname, job_title, phone, org_id, citizenship_id)
-VALUES (2, 0, 'Джон', '', 'Джонсон', 'Product manager', '+14934323423', 1, 2);
-
-INSERT INTO Person (id, version, first_name, middle_name, surname, job_title, phone, org_id, citizenship_id)
-VALUES (3, 0, 'Франк', 'Ульрих', 'Циммерман', 'Бухгалтер', '+491112223344', 2, 3);
-
 INSERT INTO Office (id, version, name, address, phone, org_id)
 VALUES (1, 0, 'БЦ Око', '1-й Красногвардейский пр-д, 21, стр.1, Москва, 123317', '+79169161619', 1);
 
@@ -35,6 +26,15 @@ VALUES (4, 0, 'Google München', 'Erika-Mann-Str. 33, 80636 Мюнхен', '+491
 
 INSERT INTO Office (id, version, name, address, phone, org_id)
 VALUES (5, 0, 'Google Ireland', 'Barrow St, Дублин, Dublin City, Ирландия', '+353111222333', 2);
+
+INSERT INTO Person (id, version, first_name, middle_name, surname, job_title, phone, office_id, citizenship_id)
+VALUES (1, 0, 'Иван', 'Иванович', 'Иванов', 'Software engineer', '+79231112233', 2, 1);
+
+INSERT INTO Person (id, version, first_name, middle_name, surname, job_title, phone, office_id, citizenship_id)
+VALUES (2, 0, 'Джон', '', 'Джонсон', 'Product manager', '+14934323423', 4, 2);
+
+INSERT INTO Person (id, version, first_name, middle_name, surname, job_title, phone, office_id, citizenship_id)
+VALUES (3, 0, 'Франк', 'Ульрих', 'Циммерман', 'Бухгалтер', '+491112223344', 5, 3);
 
 INSERT INTO Document (person_id, doc_type_id, number, issue_date)
 VALUES (1, 1, '4323 242345', '2020-05-24');
