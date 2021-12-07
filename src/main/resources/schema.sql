@@ -43,21 +43,21 @@ CREATE TABLE IF NOT EXISTS Citizenship (
 );
 COMMENT ON TABLE Citizenship IS 'Справочник с гражданствами';
 
-CREATE TABLE IF NOT EXISTS Document (
+CREATE TABLE IF NOT EXISTS Document_Type (
     id        INTEGER                 COMMENT 'Уникальный идентификатор' PRIMARY KEY AUTO_INCREMENT ,
     name      VARCHAR(100) NOT NULL   COMMENT 'Наименование'
 );
-COMMENT ON TABLE Citizenship IS 'Справочник с гражданствами';
+COMMENT ON TABLE Document_Type IS 'Справочник с типами документов';
 
-CREATE TABLE IF NOT EXISTS User_Document (
+CREATE TABLE IF NOT EXISTS Document (
     person_id      INTEGER NOT NULL   COMMENT 'Уникальный идентификатор человека',
-    doc_id         INTEGER NOT NULL   COMMENT 'Уникальный идентификатор документа',
+    doc_type_id    INTEGER NOT NULL   COMMENT 'Уникальный идентификатор документа',
     number         VARCHAR(25)        COMMENT 'Номер документа',
-    issue_date     INTEGER            COMMENT 'Дата выдачи',
+    issue_date     DATE               COMMENT 'Дата выдачи',
 
-    PRIMARY KEY (person_id, doc_id)
+    PRIMARY KEY (person_id)
 );
-COMMENT ON TABLE User_Document IS 'Таблица для связи человека и документа';
+COMMENT ON TABLE Document IS 'Таблица документов';
 
 CREATE INDEX IX_Person_Id ON Person (id);
 ALTER TABLE Person ADD FOREIGN KEY (org_id) REFERENCES Organization(id);
@@ -70,10 +70,10 @@ CREATE INDEX IX_Organization_Id ON Organization (id);
 
 CREATE INDEX IX_Citizenship_Id ON Citizenship (id);
 
-CREATE INDEX IX_Document_Id ON Document (id);
+CREATE INDEX IX_Document_Type_Id ON Document_Type(id);
 
-CREATE INDEX IX_User_Document_Id ON User_Document (person_id);
-ALTER TABLE User_Document ADD FOREIGN KEY (person_id) REFERENCES Person(id);
+CREATE INDEX IX_User_Document_Id ON Document (person_id);
+ALTER TABLE Document ADD FOREIGN KEY (person_id) REFERENCES Person(id);
 
-CREATE INDEX IX_Document_User_Id ON User_Document (doc_id);
-ALTER TABLE User_Document ADD FOREIGN KEY (doc_id) REFERENCES Document(id);
+CREATE INDEX IX_Document_Type_Document_Id ON Document (doc_type_id);
+ALTER TABLE Document ADD FOREIGN KEY (doc_type_id) REFERENCES Document_Type(id);
