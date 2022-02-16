@@ -1,4 +1,6 @@
-package ru.bellintegrator.practice.model;
+package ru.bellintegrator.practice.organization.model;
+
+import ru.bellintegrator.practice.model.Office;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -81,6 +83,16 @@ public class Organization {
      */
     public Organization() {
 
+    }
+
+    public Organization(String name, String fullName, String inn, String kpp, String address, String phone, Boolean isActive) {
+        this.name = name;
+        this.fullName = fullName;
+        this.inn = inn;
+        this.kpp = kpp;
+        this.address = address;
+        this.phone = phone;
+        this.isActive = isActive;
     }
 
     public Long getId() { return id; }

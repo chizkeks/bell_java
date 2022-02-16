@@ -29,9 +29,9 @@ CREATE TABLE IF NOT EXISTS Organization (
     version      INTEGER NOT NULL                   COMMENT 'Служебное поле hibernate',
     name         VARCHAR(100) NOT NULL              COMMENT 'Наименование',
     full_name    VARCHAR(255) NOT NULL              COMMENT 'Полное наименование',
-    inn          VARCHAR(12)                        COMMENT 'ИНН',
-    kpp          VARCHAR(9)                         COMMENT 'КПП',
-    address      VARCHAR(255)                       COMMENT 'Адрес',
+    inn          VARCHAR(12)  NOT NULL              COMMENT 'ИНН',
+    kpp          VARCHAR(9)   NOT NULL              COMMENT 'КПП',
+    address      VARCHAR(255) NOT NULL              COMMENT 'Адрес',
     phone        VARCHAR(15)                        COMMENT 'Номер телефона',
     is_active    BOOLEAN DEFAULT false NOT NULL     COMMENT 'Флаг активности'
 );
