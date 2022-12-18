@@ -1,5 +1,7 @@
 package ru.bellintegrator.practice.model;
 
+import ru.bellintegrator.practice.organization.model.Organization;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
